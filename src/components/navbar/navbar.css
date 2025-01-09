@@ -1,0 +1,17 @@
+.navbar{
+    display: flex;
+    flex-direction: column;
+    padding: 10px 0 10px 0;
+}
+
+.navbar__link{
+    text-decoration: none;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    border-radius: 30px;
+}
+
+.navbar__link:hover{
+    background-color: #b3bbdc;
+}
