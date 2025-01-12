@@ -2,13 +2,13 @@ import React from "react";
 import "./message.css"
 
 
-function Message() {
+function Message(props) {
     return(
         <div className="message">
             <div className="names">
-            <p className="message__name">Ivan</p>
+            <p className="message__name">{props.name}</p>
             </div>
-            <p className="message__notification">Hello, how are you?</p>
+            <p className="message__notification">{props.message}</p>
         </div>
     )
 }
