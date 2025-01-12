@@ -2,7 +2,7 @@ import React from "react";
 import "./profile.css"
 import ava from "./img/Elon_musk.jpg"
 import Posts from "../posts/Posts";
-import Messages from "../messages/Messages";
+// import Messages from "../messages/Messages";
 
 
 function Profile() {
@@ -13,7 +13,7 @@ function Profile() {
                 <p className="me__text">Elon Mask</p>
             </div>
             <Posts />
-            <Messages />
+            {/* <Messages /> */}
         </div>
     )
 }
