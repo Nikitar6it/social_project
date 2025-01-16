@@ -1,0 +1,11 @@
+.me {
+    display: grid;
+    grid-template-columns: 3fr 9fr;
+    gap: 10px;
+}
+.me__img {
+    width: 100%;
+    border-radius: 10px;
+}
+.me__text {
+}
