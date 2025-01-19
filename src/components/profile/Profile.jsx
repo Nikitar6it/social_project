@@ -5,11 +5,11 @@ import ProfileInfo from "../profileInfo/ProfileInfo";
 // import Messages from "../messages/Messages";
 
 
-function Profile() {
+function Profile(props) {
     return (
         <div className="profile">
             <ProfileInfo />
-            <Posts />
+            <Posts postMessage={props.profilePage.postMessage}/>
             {/* <Messages /> */}
         </div>
     )

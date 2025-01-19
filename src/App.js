@@ -6,7 +6,7 @@ import Messages from './components/messages/Messages';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
 
-function App() {
+function App(props) {
   return (
     <div className='wrapper'>
       <BrowserRouter>
@@ -14,9 +14,9 @@ function App() {
         <Navbar />
         <div className="wrapper__content">
           <Routes>
-            <Route path='/' element={<Profile />} />
-            <Route path='/profile' element={<Profile />} />
-            <Route path='/messages' element={<Messages />} />
+            <Route path='/' element={<Profile profilePage={props.state.profilePage} />} />
+            <Route path='/profile' element={<Profile profilePage={props.state.profilePage} />} />
+            <Route path='/messages' element={<Messages messagePage={props.state.messagePage}/>} />
           </Routes>
         </div>
       </BrowserRouter>
