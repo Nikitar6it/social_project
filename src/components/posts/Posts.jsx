@@ -3,11 +3,18 @@ import "./posts.css"
 import Post from "../post/Post";
 
 function Posts(props){
+    let postText = React.createRef()
+    let addPost = ()=> {
+        props.addPost(postText.current.value)
+    }
+    let onPostChange = () =>{
+        props.onPostChange(postText.current.value)
+    }
     return(
         <div className="posts">
                 <h1 className="posts__title">My Posts</h1>
-                <input type="text" placeholder="enter the post" className="post__text" />
-                <button className="posts__btn">Add post</button>
+                <input onChange={onPostChange} value={props.newPostText} ref={postText} type="text" placeholder="enter the post" className="post__text" />
+                <button className="posts__btn" onClick={addPost}>Add post</button>
                 {props.postMessage.map((e) => <Post message={e.message} key={e.id}/>)}
                 {/* <Post message="Hello World" />
                 <Post message="I am Elon Mask" />
