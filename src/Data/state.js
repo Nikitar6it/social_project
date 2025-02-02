@@ -1,4 +1,4 @@
-import { rerenderTree } from "../render"
+
 
 
 let state = {
@@ -11,7 +11,7 @@ let state = {
     ],
     newPostText:""
   },
-
+  
   messagePage: {
     messageMessages: [
       { name: "Ivan Ivanovich", message: "Hello World", id: 1 },
@@ -20,7 +20,13 @@ let state = {
     ],
     newMessage:""
   },
+  
+}
 
+let rerenderTree = () => {}
+
+export let subscribe = (observer) => {
+  rerenderTree = observer
 }
 
 export let addPost = (postText) => {
