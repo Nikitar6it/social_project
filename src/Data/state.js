@@ -1,61 +1,64 @@
+let store = {
+  _state : {
+    profilePage: {
+      postMessage: [
+        { message: "Hello World", id: 1 },
+        { message: "I am Elon Mask", id: 2 },
+        { message: "Let's go to Mars", id: 3 },
+        { message: "Buy a Tesla", id: 4 },
+      ],
+      newPostText:""
+    },
+    
+    messagePage: {
+      messageMessages: [
+        { name: "Ivan Ivanovich", message: "Hello World", id: 1 },
+        { name: "Donald Trump", message: "Let's build a wall ", id: 2 },
+        { name: "Bill Gates", message: "Waiting for a new chip ", id: 3 }
+      ],
+      newMessage:""
+    },
+  },
 
+  rerenderTree(){},
 
-
-let state = {
-  profilePage: {
-    postMessage: [
-      { message: "Hello World", id: 1 },
-      { message: "I am Elon Mask", id: 2 },
-      { message: "Let's go to Mars", id: 3 },
-      { message: "Buy a Tesla", id: 4 },
-    ],
-    newPostText:""
+  subscribe (observer) {
+    this.rerenderTree = observer
   },
   
-  messagePage: {
-    messageMessages: [
-      { name: "Ivan Ivanovich", message: "Hello World", id: 1 },
-      { name: "Donald Trump", message: "Let's build a wall ", id: 2 },
-      { name: "Bill Gates", message: "Waiting for a new chip ", id: 3 }
-    ],
-    newMessage:""
+  addPost (postText) {
+    let newPost = {
+      message: postText,
+      id: this._state.profilePage.postMessage.length + 1,
+    }
+    this._state.profilePage.postMessage.unshift(newPost)
+    this.rerenderTree(this._state)
   },
   
-}
+  addMessage (text, name) {
+    let newMessage = {
+      name: name,
+      message: text,
+      id: this._state.messagePage.messageMessages.length + 1,
+    }
+    this._state.messagePage.messageMessages.push(newMessage)
+    this.rerenderTree(this._state)
+  },
+  
+  onPostChange (text) {
+    this._state.profilePage.newPostText = text
+    this.rerenderTree(this._state)
+  },
+  
+  onMessageChange (text) {
+    this._state.messagePage.newMessage = text
+    this.rerenderTree(this._state)
+  },
 
-let rerenderTree = () => {}
-
-export let subscribe = (observer) => {
-  rerenderTree = observer
-}
-
-export let addPost = (postText) => {
-  let newPost = {
-    message: postText,
-    id: state.profilePage.postMessage.length + 1,
+  getState (){
+    return this._state
   }
-  state.profilePage.postMessage.unshift(newPost)
-  rerenderTree(state)
 }
 
-export let addMessage = (text, name) => {
-  let newMessage = {
-    name: name,
-    message: text,
-    id: state.messagePage.messageMessages.length + 1,
-  }
-  state.messagePage.messageMessages.push(newMessage)
-  rerenderTree(state)
-}
 
-export let onPostChange = (text) => {
-  state.profilePage.newPostText = text
-  rerenderTree(state)
-}
-
-export let onMessageChange = (text) => {
-  state.messagePage.newMessage = text
-  rerenderTree(state)
-}
-
-export default state;
+export default store;
