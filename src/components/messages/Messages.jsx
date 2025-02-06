@@ -5,10 +5,10 @@ import Message from "../message/Message";
 function Messages(props){
     let text = React.createRef()
     let addMessage = () => {
-        props.addMessage(text.current.value, "Elon Mask")
+        props.dispatch({type: "ADD-MESSAGE", text: text.current.value, name: "Elon Mask"})
     }
     let onMessageChange = () =>{
-        props.onMessageChange(text.current.value)
+        props.dispatch({type:"MESSAGE-CHANGE", text: text.current.value})
     }
     return(
         <div className="messages">
