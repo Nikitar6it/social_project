@@ -1,3 +1,7 @@
+import profileReduser from "./profileReduser"
+import messageReduser from "./messageReduser"
+
+
 let store = {
   _state: {
     profilePage: {
@@ -54,27 +58,12 @@ let store = {
   },
 
   dispatch(action) {
-    if (action.type == "ADD-POST") {
-      let newPost = {
-        message: action.text,
-        id: this._state.profilePage.postMessage.length + 1,
-      }
-      this._state.profilePage.postMessage.unshift(newPost)
-    } else if (action.type == "POST-CHANGE") {
-      this._state.profilePage.newPostText = action.text
-    } else if (action.type == "ADD-MESSAGE") {
-      let newMessage = {
-        name: action.name,
-        message: action.text,
-        id: this._state.messagePage.messageMessages.length + 1,
-      }
-      this._state.messagePage.messageMessages.push(newMessage)
-    } else if (action.type == "MESSAGE-CHANGE") {
-      this._state.messagePage.newMessage = action.text
-    }
+    this._state.profilePage = profileReduser(action, this._state.profilePage)
+    this._state.messagePage = messageReduser(action, this._state.messagePage)
     this.rerenderTree(this._state)
   }
 }
 
 
 export default store;
+

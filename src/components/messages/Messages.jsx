@@ -1,14 +1,15 @@
 import React from "react";
 import "./messages.css"
 import Message from "../message/Message";
+import { onMessageChangeAC,addMessageAC } from "../../Data/messageReduser";
 
 function Messages(props){
     let text = React.createRef()
     let addMessage = () => {
-        props.dispatch({type: "ADD-MESSAGE", text: text.current.value, name: "Elon Mask"})
+        props.dispatch(addMessageAC(text.current.value, "Elon Mask"))
     }
     let onMessageChange = () =>{
-        props.dispatch({type:"MESSAGE-CHANGE", text: text.current.value})
+        props.dispatch(onMessageChangeAC(text.current.value))
     }
     return(
         <div className="messages">

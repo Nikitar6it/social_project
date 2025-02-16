@@ -1,15 +1,17 @@
 import React from "react";
 import "./posts.css"
 import Post from "../post/Post";
+import { addPostAC, onPostChangeAC } from "../../Data/profileReduser";
+
 
 function Posts(props){
     console.log(props)
     let postText = React.createRef()
     let addPost = ()=> {
-        props.dispatch({type:"ADD-POST", text: postText.current.value})
+        props.dispatch(addPostAC(postText.current.value))
     }
     let onPostChange = () =>{
-        props.dispatch({type:"POST-CHANGE", text: postText.current.value})
+        props.dispatch(onPostChangeAC(postText.current.value))
     }
     return(
         <div className="posts">
