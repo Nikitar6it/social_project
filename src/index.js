@@ -4,7 +4,7 @@ import './index.css';
 import App from './App';
 // import { addMessage, addPost, onPostChange, onMessageChange,subscribe } from './Data/state';
 // import { rerenderTree } from "./render";
-import store from "./Data/state";
+import store from "./Data/store";
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -16,8 +16,11 @@ export let rerenderTree = (state) => {
   ); 
 }
 
-rerenderTree(store.getState())
-store.subscribe(rerenderTree)
+rerenderTree(store.getState()) 
+store.subscribe(() =>{
+  rerenderTree(store.getState()) 
+})
+
 
 
 

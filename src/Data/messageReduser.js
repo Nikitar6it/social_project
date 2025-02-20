@@ -1,7 +1,16 @@
 const ADD_MESSAGE = "ADD-MESSAGE"
 const MESSAGE_CHANGE = "MESSAGE-CHANGE"
 
-let messageReduser = (action,state) => {
+
+let intitialState = {
+  messageMessages: [
+    { name: "Ivan Ivanovich", message: "Hello World", id: 1 },
+    { name: "Donald Trump", message: "Let's build a wall ", id: 2 },
+    { name: "Bill Gates", message: "Waiting for a new chip ", id: 3 }
+  ],
+  newMessage: ""
+}
+let messageReduser = (state=intitialState, action) => {
     if (action.type == ADD_MESSAGE) {
         let newMessage = {
           name: action.name,
